@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        position: relative;
+        height: 100vh;
+      }
+      .calculator {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 20px;
+        background-color: #9e8d90;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: 1px solid rgb(137, 137, 137);
+        box-shadow: 0px 0px 10px #474747;
+        border: 2px solid grey;
+      }
+      .screen {
+        width: 260px;
+        background-color: white;
+        margin-bottom: 10px;
+        box-shadow: 0px 0px 6px #d0d0d0;
+        border: 1px solid grey;
+        padding: 20px 10px;
+        text-align: right;
+        outline: none;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 10px;
+        border: 2px solid grey;
+      }
+      .calculator-body {
+        border: 1px solid rgb(137, 137, 137);
+        display: flex;
+        padding: 10px;
+        background-color: rgb(247, 178, 170);
+        border-radius: 10px;
+        box-shadow: 0px 0px 2px #d0d0d0;
+        border: 2px solid grey;
+      }
+      .calculator-block {
+        width: 200px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .calculator__operators {
+        display: flex;
+        flex-direction: column;
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background-color: salmon;
+        padding: 9px;
+        border: 2px solid rgb(156, 156, 156);
+        cursor: pointer;
+        border-radius: 50%;
+        font-weight: 800;
+        font-size: 20px;
+        margin: 3px;
+        box-shadow: 0px 0px 10px #bdbdbd;
+        transition: background-color 0.3s ease 0s;
+      }
+      .btn:hover {
+        background-color: rgb(250, 102, 86);
+      }
+      .active {
+        transform: scale(1.1);
+        background-color: rgb(250, 102, 86);
+      }
+      .tasks-block {
+        display: flex;
+        column-gap: 15px;
+        padding: 30px;
+        font-size: 25px;
+      }
+      .tasks-block a {
+        color: rgb(58, 58, 58);
+        text-decoration: none;
+      }
+      .tasks-block a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="tasks-block">
+      <a href="index.html">Task 1</a>
+      <a href="task2.html">Task 2</a>
+      <a href="task3.html">Task 3</a>
+    </div>
+
+    <form class="calculator">
+      <div class="form-body">
+        <input class="screen" type="text" />
+      </div>
+      <div id="calculator-body" class="calculator-body">
+        <div class="calculator-block">
+          <button class="btn btn-add-res">7</button>
+          <button class="btn btn-add-res">8</button>
+          <button class="btn btn-add-res">9</button>
+          <button class="btn btn-add-res">4</button>
+          <button class="btn btn-add-res">5</button>
+          <button class="btn btn-add-res">6</button>
+          <button class="btn btn-add-res">1</button>
+          <button class="btn btn-add-res">2</button>
+          <button class="btn btn-add-res">3</button>
+          <button class="btn reset">C</button>
+          <button class="btn btn-add-res">0</button>
+          <button class="btn btn-calc">=</button>
+        </div>
+        <div class="calculator__operators">
+          <button class="btn btn-add-res">+</button>
+          <button class="btn btn-add-res">-</button>
+          <button class="btn btn-add-res">*</button>
+          <button class="btn btn-add-res">/</button>
+        </div>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+      // -------------------------------------------------------------
+      // Values
+      let resultScreen = document.querySelector(".screen"),
+        btnRes = document.querySelectorAll(".btn-add-res"),
+        btnCalc = document.querySelector(".btn-calc"),
+        reset = document.querySelector(".reset"),
+        form = document.querySelector(".calculator"),
+        selectedBtn;
+
+      // -------------------------------------------------------------
+      // Prevent form from updating
+      document.addEventListener("DOMContentLoaded", function () {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+        });
+      });
+
+      // -------------------------------------------------------------
+      // Add value to the screen
+      for (i = 0; i < btnRes.length; i++) {
+        btnRes[i].addEventListener("click", function (e) {
+          e.preventDefault();
+          resultScreen.value += this.innerHTML;
+        });
+      }
+
+      // ------------------------------------------------------------
+      // Scale button block
+      form.onclick = function (e) {
+        if (e.target.tagName != "BUTTON") return;
+        scale(event.target);
+      };
+
+      function scale(button) {
+        if (selectedBtn) {
+          selectedBtn.classList.remove("active");
+        }
+        selectedBtn = button;
+        selectedBtn.classList.add("active");
+      }
+
+      // ------------------------------------------------------------
+      // Reset function
+      reset.addEventListener("click", function (e) {
+        e.preventDefault();
+        resultScreen.value = "";
+      });
+
+      // ------------------------------------------------------------
+      // Calculating result
+      btnCalc.addEventListener("click", function (e) {
+        e.preventDefault();
+        resultScreen.value = eval(resultScreen.value);
+      });
+    </script>
+  </body>
+</html>

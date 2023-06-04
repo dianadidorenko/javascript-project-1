@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        position: relative;
+      }
+      #text {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+      }
+      #color-items {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 5px 5px;
+        max-width: 100%;
+        padding: 10px;
+        border: 1px solid #e0d7ce;
+        box-shadow: 0px 0px 10px #e0d7ce;
+      }
+      #color-items > div {
+        border: 1px solid #938e8966;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
+      .black {
+        background-color: black;
+      }
+      .darkgrey {
+        background-color: darkgrey;
+      }
+      .hotpink {
+        background-color: hotpink;
+      }
+      .red {
+        background-color: red;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+      .green {
+        background-color: green;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .navy {
+        background-color: navy;
+      }
+      .purple {
+        background-color: purple;
+      }
+      .white {
+        background-color: white;
+      }
+      .grey {
+        background-color: grey;
+      }
+      .brown {
+        background-color: brown;
+      }
+      .pink {
+        background-color: pink;
+      }
+      .blueviolet {
+        background-color: blueviolet;
+      }
+      .gold {
+        background-color: gold;
+      }
+      .teal {
+        background-color: teal;
+      }
+      .greenyellow {
+        background-color: greenyellow;
+      }
+      .palevioletred {
+        background-color: palevioletred;
+      }
+     .tasks-block {
+        display: flex;
+        column-gap: 15px;
+        padding: 30px;
+        font-size: 25px;
+      }
+      .tasks-block a {
+        color: rgb(58, 58, 58);
+        text-decoration: none;
+      }
+      .tasks-block a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="tasks-block">
+      <a href="index.html">Task 1</a>
+      <a href="task2.html">Task 2</a>
+      <a href="task4.html">Task 4</a>
+    </div>
+
+    <div id="color-items">
+      <div class="black" data-color="black"></div>
+      <div class="darkgrey" data-color="darkgrey"></div>
+      <div class="hotpink" data-color="hotpink"></div>
+      <div class="red" data-color="red"></div>
+      <div class="yellow" data-color="yellow"></div>
+      <div class="green" data-color="green"></div>
+      <div class="blue" data-color="blue"></div>
+      <div class="navy" data-color="navy"></div>
+      <div class="purple" data-color="purple"></div>
+      <div class="white" data-color="white"></div>
+      <div class="grey" data-color="grey"></div>
+      <div class="brown" data-color="brown"></div>
+      <div class="pink" data-color="pink"></div>
+      <div class="blueviolet" data-color="blueviolet"></div>
+      <div class="gold" data-color="gold"></div>
+      <div class="teal" data-color="teal"></div>
+      <div class="greenyellow" data-color="greenyellow"></div>
+      <div class="palevioletred" data-color="palevioletred"></div>
+    </div>
+    <p id="text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum officia
+      necessitatibus quaerat veniam magnam! Et omnis iusto possimus quae aliquid
+      officiis magni nisi, dignissimos inventore, debitis quas distinctio sed
+      dolor tempora delectus quo provident accusantium laborum. Delectus ad
+      suscipit iste maiores vero officia a modi eum consequatur, ducimus,
+      aperiam ipsa?
+    </p>
+    <script type="text/javascript">
+      let colors = document.querySelectorAll("#color-items>div");
+
+      for (item of colors) {
+        item.onclick = function () {
+          if (
+            this.dataset.color == "yellow" ||
+            this.dataset.color == "white" ||
+            this.dataset.color == "greenyellow"
+          ) {
+            text.style.color = this.dataset.color;
+            text.style.backgroundColor = "lightgrey";
+          } else if (
+            this.dataset.color != "yellow" ||
+            this.dataset.color != "white"
+          ) {
+            text.style.color = this.dataset.color;
+            text.style.transition = "all 0.3s eae 0s";
+            text.style.backgroundColor = "transparent";
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

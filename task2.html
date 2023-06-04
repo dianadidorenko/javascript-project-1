@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        height: 100vh;
+        position: relative;
+      }
+      .favorite-quantity-block {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        border: 1px solid #e0d7ce;
+        box-shadow: 0px 0px 10px #e0d7ce;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      #favoriteQuantity {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 10px;
+        font-size: 20px;
+        letter-spacing: -0.03em;
+        background: #eee4da;
+        padding: 11px;
+        border-radius: 66px;
+        border: 1px solid #e0d7ce;
+        box-shadow: 0px 0px 10px #e0d7ce;
+      }
+      a {
+        cursor: pointer;
+      }
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      .number-favorite {
+        font-size: 25px;
+        display: flex;
+        column-gap: 10px;
+        margin: 0;
+      }
+    .tasks-block {
+        display: flex;
+        column-gap: 15px;
+        padding: 30px;
+        font-size: 25px;
+      }
+      .tasks-block a {
+        color: rgb(58, 58, 58);
+        text-decoration: none;
+      }
+      .tasks-block a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="tasks-block">
+      <a href="index.html">Task 1</a>
+      <a href="task3.html">Task 3</a>
+      <a href="task4.html">Task 4</a>
+    </div>
+
+    <div class="favorite-quantity-block">
+      <a id="favoriteQuantity">
+        <img src="like.svg" alt="Like Icon" />
+        <p class="number-favorite">Like <span id="plus">0</span></p>
+      </a>
+    </div>
+
+    <script type="text/javascript">
+      let countPlus = document.getElementById("plus"),
+        favQuantity = document.getElementById("favoriteQuantity"),
+        number = 0;
+
+      favQuantity.addEventListener("click", function () {
+        number++;
+        countPlus.innerText = number;
+      });
+      favQuantity.addEventListener("mouseup", function () {
+        favQuantity.style.transform = "scale(1.07)";
+        favQuantity.style.transition = "all 0.3s ease 0s";
+      });
+      favQuantity.addEventListener("mousedown", function () {
+        favQuantity.style.transform = "scale(1)";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        height: 100vh;
+        position: relative;
+        margin: 0;
+      }
+      .favorite-quantity-block {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        border: 1px solid #e0d7ce;
+        box-shadow: 0px 0px 10px #e0d7ce;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+      .favorite-quantity {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 30px;
+        font-size: 20px;
+        line-height: 120%;
+        letter-spacing: -0.03em;
+        background: #eee4da;
+        padding: 11px 19px 11px 22px;
+        border-radius: 66px;
+        border: 1px solid #e0d7ce;
+        box-shadow: 0px 0px 10px #e0d7ce;
+      }
+      .favorite-quantity span {
+        font-size: 24px;
+      }
+      .favorite-quantity span:nth-child(1) {
+        opacity: 0.3;
+      }
+      .minus,
+      .plus {
+        cursor: pointer;
+      }
+      .tasks-block {
+        display: flex;
+        column-gap: 15px;
+        padding: 30px;
+        font-size: 25px;
+      }
+      .tasks-block a {
+        color: rgb(58, 58, 58);
+        text-decoration: none;
+      }
+      .tasks-block a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="tasks-block">
+      <a href="task2.html">Task 2 > </a>
+      <a href="task3.html">Task 3 > </a>
+      <a href="task4.html">Task 4</a>
+    </div>
+
+    <div class="favorite-quantity-block">
+      <p class="favorite-quantity">
+        <span class="minus">-</span>
+        <span class="number-favorite">0</span>
+        <span class="plus">+</span>
+      </p>
+    </div>
+    <script type="text/javascript">
+      let numberHtml = document.querySelector(".number-favorite"),
+        countPlus = document.querySelector(".plus"),
+        countMinus = document.querySelector(".minus");
+      number = 0;
+
+      // клік мишею
+      countPlus.addEventListener("click", function () {
+        number++;
+        numberHtml.innerText = number;
+      });
+
+      countMinus.addEventListener("click", function () {
+        if (numberHtml.innerText == 0) {
+          numberHtml.innerText = 0;
+        } else {
+          number--;
+          numberHtml.innerText = number;
+        }
+      });
+      // клік мишею
+
+      // з клавіатури
+      document.addEventListener("keydown", function (e) {
+        // console.log(e);
+        if (e.which == 38) {
+          number++;
+          numberHtml.innerText = number;
+        } else if (e.which == 40 && number >= 0) {
+          number--;
+          numberHtml.innerText = number + 1;
+        }
+      });
+      // з клавіатури
+    </script>
+  </body>
+</html>
